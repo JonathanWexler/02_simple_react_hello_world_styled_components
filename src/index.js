@@ -1,26 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import styled from "styled-components";
 
-
-const StyledNormalParagraph = styled.p`
-  text-align: center;
+const TodoListWrapper = styled.ul`
+  font-weight: ${(props) => (props.emphasize ? "bold" : "normal")};
+  font-size: 1.5rem;
 `;
 
-const StyledSpecialParagraph = styled(StyledNormalParagraph)`
-  font-weight: bold;
+const ListItem = styled.li`
+  list-style: none;
 `;
 
-const MyApplication =  () => <div>
-  <StyledNormalParagraph>
-    Hello, I am regular paragraph styled with basic CSS.
-  </StyledNormalParagraph>
-  <StyledSpecialParagraph>
-    Hello, I another paragraph styled differently.
-  </StyledSpecialParagraph>
-</div>;
+const CheckboxWrapper = styled.label``;
 
-ReactDOM.render(
-  <MyApplication/>,
-  document.getElementById('root')
+const MyApplication = () => (
+  <>
+    <TodoListWrapper>
+      <ListItem>
+        <CheckboxWrapper>
+          <input type="checkbox" />
+          <span>Task 1</span>
+        </CheckboxWrapper>
+      </ListItem>
+      <ListItem>
+        <CheckboxWrapper>
+          <input type="checkbox" />
+          <span>Task 2</span>
+        </CheckboxWrapper>
+      </ListItem>
+      <ListItem>
+        <CheckboxWrapper>
+          <input type="checkbox" />
+          <span>Task 3</span>
+        </CheckboxWrapper>
+      </ListItem>
+      <ListItem>
+        <CheckboxWrapper>
+          <input type="checkbox" />
+          <span>Task 4</span>
+        </CheckboxWrapper>
+      </ListItem>
+    </TodoListWrapper>
+  </>
 );
+
+ReactDOM.render(<MyApplication />, document.getElementById("root"));
