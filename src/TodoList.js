@@ -16,28 +16,27 @@ const AddTodo = () => {
   const handleChange = (event) => {
     setNewTodo(event.target.value);
   };
-  const handleClick = () => {
-    setNewTodo("");
-    return dispatch({
-      type: "ADD_TODO",
-      payload: {
-        label: newTodo,
-        id: Math.ceil(Math.random() * 100),
-      },
-    });
-  };
+  const handleClick = () => {};
 
   return (
     <>
-      <input value={newTodo} onChange={handleChange} type="text" />
+      <input type="text" />
       <button onClick={handleClick}>Add Item</button>
     </>
   );
 };
 
 const TodoList = () => {
-  const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const todos = [
+    {
+      id: 1,
+      label: 'sample'
+    },
+    {
+      id: 2,
+      label: 'sample 2'
+    },
+  ];
   const CheckboxWrapper = styled.label`
     display: inline-block;
     padding: 0.25em 0;
@@ -49,22 +48,13 @@ const TodoList = () => {
     }
   `;
 
-  const handleCheck = (id) => {
-    return dispatch({
-      type: "DELETE_TODO",
-      payload: {
-        id,
-      },
-    });
-  };
-
   return (
     <>
     {todos && todos.length > 0 && (
       <TodoListWrapper>
           {todos.map((todo) => (
             <ListItem key={todo.id}>
-              <CheckboxWrapper onClick={() => handleCheck(todo.id)}>
+              <CheckboxWrapper>
                 <input type="checkbox" />
                 <span>{todo.label}</span>
               </CheckboxWrapper>
