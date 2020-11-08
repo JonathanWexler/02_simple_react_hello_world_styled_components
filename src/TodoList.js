@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import store from "./configureStore";
 const TodoListWrapper = styled.ul`
   font-size: 1.25em;
   padding: 0;
